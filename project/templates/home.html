@@ -1,0 +1,35 @@
+{% extends 'base.html'%} {% block content %}
+<div class="row justify-content-center mb-3">
+    <div class="col-md-9 text-center">
+        <h1 id="hometext" class="font-weight-bold">This is a Sample Project created using DJANGO!!!</h1>
+    </div>
+</div>
+<div class="row">
+    {% for p in projects %}
+    <div class="col-lg-4 col-md-6">
+
+        {% if p.url %}
+        <a href="{{ p.url }}">
+            <img src="{{ p.image.url }}" class="img-fluid mb-2">
+        </a>
+        {% else %}
+
+        <img src="{{ p.image.url }}" class="img-fluid mb-2">
+         {% endif %}
+        <!-- {{p.image}}  -->
+        <!-- <img src="{{p.image.url}}" class="img-fluid mb-2"> -->
+
+        <h3>{{p.title}}</h3>
+        <p>{{p.description}}</p>
+
+        <!-- <p> {% if p.url %} {{p.url |truncatechars:15}} {% endif %} </p> -->
+    </div>
+    {% endfor%}
+</div>
+<!-- <a href="{% url 'blog:bloghome'%}">to Blogs</a> -->
+
+<!-- {% load static %} -->
+<!-- <img height="50px" src="{% static 'img/Dragon_Breath_(251).jpg'%}"> -->
+<!-- <a href="{% static 'img/U92296-resume.pdf' %}">Resume</a> -->
+
+{%endblock%}
