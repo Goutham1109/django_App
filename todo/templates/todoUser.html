@@ -1,6 +1,7 @@
 {% extends "todobase.html" %}
 
 {% block content %}
+{% csrf_token %}
     <div class="row justify-content-center mt-5">
         <div class="col-md-10">
             {% if value %}
@@ -22,16 +23,18 @@
             <div class="text-center">
                 <h2>Looks like you don't have any todos! Nice work.</h2>
             <br>
-            <a role="button" class="btn btn-primary" href="{% url 'createtodo' %}">New Todo</a>
+            <a role="button" class="btn btn-primary" href="{% url 'createnew' %}">New Todo</a>
             </div>
         {% endif %}
         </div>
     </div>
+    {% if value.count > 0 %}
     <div class="row justify-content-center mt-5">
         <button class="btn btn-primary" onclick="$('#create').click()">
             Create New Todo
         </button>
 </div>
+{% endif %}
 
 <!-- {% if value.datecompleted is None %} -->
 <form style='display: none;' method="GET" action="{% url 'createnew' %}">

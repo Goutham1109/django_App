@@ -39,7 +39,7 @@ def loginuser(request):
             login(request,user)
             return redirect('dashboard')
 
-@login_required      
+      
 def createnew(request):
             if request.method == 'GET':
                 return render(request,'createtodo.html' ,{'form':TodoCreateForm()})
