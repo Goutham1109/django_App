@@ -12,15 +12,19 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
     crossorigin="anonymous">
   <link rel="stylesheet" href="{% static " css/custom.css " %}">
-
-  <title>The App</title>
+  <link rel="icon" type="image/png" href="{% static 'img/appicon.png' %}">
+  <title class="font">The App</title>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #255eda;">
     <a class="navbar-brand" href="{% url 'home' %}">
-      <img src="{% static "img/Ganesh-Pencil-Art.jpg" %}" width="30" height="30" class="d-inline-block align-top">
-      <span><b><i>The App</i></b></span>
+      <img src="{% static " img/appicon.png " %}" width="30" height="30" class="d-inline-block align-top">
+      <span style="color: white">
+        <b>
+          <i>The App</i>
+        </b>
+      </span>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
       aria-expanded="false" aria-label="Toggle navigation">
@@ -30,17 +34,46 @@
     <div class="collapse navbar-collapse text-center" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" target="_blank" href="{% static "img/resume.pdf" %}">Resume</a>
+          <a class="nav-link" target="_blank" href="{% static " img/resume.pdf " %}">
+            <span style="color: white">
+              <b>Resume</b>
+          </a>
+          </span>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" href="www.google.com" target="_blank">Google</a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'blog:bloghome' %}">
+            <span style="color: white">
+              <b>Blog</b>
+          </a>
+          </span>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{% url 'blog:bloghome' %}">Blog</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="{% url 'home' %}">Projects</a>
-            </li>
+          <a class="nav-link" href="{% url 'home' %}">
+            <span style="color: white">
+              <b>Projects</b>
+          </a>
+          </span>
+        </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'dashboard' %}">
+            <span style="color: white">
+              <b>TODO</b>
+          </a>
+          </span>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'loginuser' %}">
+            <span style="color: white">
+              <b>TODO</b>
+          </a>
+          </span>
+        </li>
+        {% endif %}
       </ul>
     </div>
   </nav>

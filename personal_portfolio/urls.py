@@ -18,11 +18,23 @@ from django.urls import path,include
 from django.conf.urls.static import static
 from django.conf import settings
 from project import views
+from todo import view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home,name='home'),
     path('blog/', include('blog.urls')),
+    path('signup', view.signupuser,name='newuser'),
+    path('login', view.loginuser,name='loginuser'),
+    path('logout', view.logoutuser,name='logoutuser'),
+    path('todoHome', view.todoHome,name='todoHome'),
+    path('userHome', view.todouserdashboard,name='dashboard'),
+    path('create', view.createnew,name='createnew'),
+    path('update/<int:id>', view.updatetodo,name='updatetodo'),
+    path('complete/<int:id>', view.updatetocomplete,name='updatetocomplete'),
+    path('delete/<int:id>', view.deletetodo,name='deletetodo'),
+    path('complete', view.getcompleted,name='getcompleted'),
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

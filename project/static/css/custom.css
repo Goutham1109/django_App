@@ -6,6 +6,10 @@
     color: rgba(0,0,0,.5) !important;
 }
 
+.font {
+    color: White !important;
+}
+
 body {
     font-family: 'Lato', sans-serif;
 }
