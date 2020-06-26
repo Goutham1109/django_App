@@ -73,6 +73,8 @@ def updatetocomplete(request,id):
         todo = get_object_or_404(TODO,pk=id,user=request.user)
         if request.method == 'POST':
                 todo.datacompleted = timezone.now()
+                # print(todo.datacompleted)
+                # print('hellp')
                 todo.save()
                 return redirect('dashboard')
 
